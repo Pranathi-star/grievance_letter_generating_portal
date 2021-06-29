@@ -1,0 +1,17 @@
+{% extends "smc/layout.html" %}
+{% block content %}
+    {% for letter in letters %}
+        <article class="media content-section">
+          <!-- <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}"> -->
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="">{{ letter.city_smc }}</a>
+              <small class="text-muted">{{ letter.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="">{{ letter.school_smc }}</a></h2>
+            <p class="article-content">{{ letter.grievance }}</p>
+            <a class="btn btn-info"  href="{% url 'view_letter' %}">Download Grievance Letter</a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

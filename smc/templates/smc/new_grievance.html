@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" /> 
+    <title>New Grievance</title>
+  </head>
+  <style type="text/css">
+    .bodyBody {
+        margin: 10px;
+        font-size: 1.50em;
+    }
+    .divHeader {
+        text-align: right;
+        border: 1px solid;
+    }
+    .divReturnAddress {
+        text-align: left;
+        float: right;
+    }
+    .divSubject {
+        clear: both;
+        font-weight: bold;
+        padding-top: 80px;
+    }
+    .divAdios {
+        float: right;
+        padding-top: 50px;
+    }
+</style>
+  <body>
+
+    <header> 
+        {{ form.name_smc }}<br/>
+        {{ form.school_smc }} <br/>
+        {{ form.city_smc }} <br/>
+        {{ form.state_smc }} <br/>    
+
+    </header>
+
+    <h3>
+      {{ form.grievance }}
+    </h3>
+
+    <div class="content">
+
+          Respected Officer,<br>
+          I am {{ form.name_smc }}, the Incharge of {{ form.school_smc }}. We are facing {{ form.grievance }} in our school. Please provide the required help.<br>
+
+        </p>
+        <p>
+          …
+        </p>
+      </div>
+      <p class="adios">
+        Yours sincerely,
+        <br class="greets" />
+        {{ form.name_smc }}  <br/>
+        {{ form.school_smc }}
+      </p>
+
+  </body>
+
+</html>
