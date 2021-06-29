@@ -16,17 +16,18 @@ import os
 from wsgiref.util import FileWrapper
 
 def raise_grievance(request):
+    print(request.user.id)
     form = GreivanceForm()
     if request.method == 'POST':
         form = GreivanceForm(request.POST)
         letter = request.POST.get('grievance_letter')
-        name = Letter.objects.filter(id = request.user.id).first().name_smc
-        grievance = Letter.objects.filter(id = request.user.id).first().grievance
-        email = Letter.objects.filter(id = request.user.id).first().email_smc
-        school = Letter.objects.filter(id = request.user.id).first().school_smc
-        state = Letter.objects.filter(id = request.user.id).first().state_smc
-        city = Letter.objects.filter(id = request.user.id).first().city_smc
-        date_posted = Letter.objects.filter(id = request.user.id).first().date_posted
+        name = Letter.objects.get(email_smc = request.user.email).name_smc
+        grievance = Letter.objects.get(email_smc = request.user.email).grievance
+        email = Letter.objects.filter(email_smc = request.user.email).first().email_smc
+        school = Letter.objects.filter(email_smc = request.user.email).first().school_smc
+        state = Letter.objects.filter(email_smc = request.user.email).first().state_smc
+        city = Letter.objects.filter(email_smc = request.user.email).first().city_smc
+        date_posted = Letter.objects.filter(email_smc = request.user.email).first().date_posted
 
         NewGrievance = GrievanceLetter.objects.create(grievance_letter = letter, name_smc = name, grievance = grievance, email_smc = email, school_smc = school, state_smc = state, city_smc = city, date_posted = date_posted)
         NewGrievance.save()
